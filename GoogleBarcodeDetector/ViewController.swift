@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Foundation
+import GoogleMobileVision
 
 class ViewController: UIViewController {
 
@@ -20,6 +22,9 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func unwindToHomeScreen(segue: UIStoryboardSegue) {
+        dismiss(animated: true, completion: nil)
+    }
 
 }
 
