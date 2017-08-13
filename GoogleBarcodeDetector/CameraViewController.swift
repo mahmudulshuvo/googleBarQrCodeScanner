@@ -109,7 +109,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         self.options = [GMVDetectorImageOrientation as AnyHashable : (orientation.rawValue)]
         let barcodes: [GMVBarcodeFeature] = self.barCodeDetector.features(in: image, options: options ) as! [GMVBarcodeFeature]
         
-        // Print information of the barcode
+        // Settin information to label
         if (barcodes.count > 0) {
                 DispatchQueue.main.sync(execute: {() -> Void in
                     for barcode in barcodes {
@@ -120,7 +120,11 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             }
             
         else {
-            qrCodeFrameView?.frame = CGRect.zero
+            
+            DispatchQueue.main.async {
+                self.qrCodeFrameView?.frame = CGRect.zero
+                self.messageLabel.text = "No QR code is detected"
+            }
         }
 
     }
